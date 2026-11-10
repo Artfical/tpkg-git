@@ -1,0 +1,26 @@
+{
+ "name": "git",
+ "version": "2.56.0-3",
+ "license": "GPL-2.0",
+ "homepage": "https://git-scm.com",
+ "licenses": [
+  "LICENSE",
+  "NOTICE.txt"
+ ],
+ "sources": [
+  "git-2.56.0.tar.xz"
+ ],
+ "desc": "Git 2.56.0 (clone over HTTPS and ssh, commit, branch, merge, rebase...; 64-bit tOS)",
+ "file": "git-2.56.0-3.tpkg",
+ "size": 12818171,
+ "sha256": "34a14b53ec9b18ca480112f7611375a454a3b4dc2d1cdb482dd2cc2e9183f6de",
+ "unpacked": 26469260,
+ "min_build": 608,
+ "depends": [
+  "curl",
+  "zlib"
+ ],
+ "commands": {
+  "git": "bin/git"
+ }
+}

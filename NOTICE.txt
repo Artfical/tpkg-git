@@ -1,0 +1,22 @@
+Git 2.56.0 for tOS (revision 3)
+===============================
+
+This is Git 2.56.0 built from the release tarball, unmodified. License: GNU General Public License,
+version 2 (LICENSE). The complete source is git-2.56.0.tar.xz, beside this package on update.artfical.com
+(also https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.56.0.tar.xz).
+
+It needs libcurl (the curl package), OpenSSL and zlib, which tpkg installs first, and the GNU C Library of
+tOS's base system (dynamic, see LICENSES.txt in /lib/x86_64-linux-gnu).
+
+What is in it: git itself, the HTTP(S) transport (git-remote-http, git-remote-https), git-upload-pack,
+git-receive-pack and git-upload-archive, the scripts that need a shell (submodule, filter-branch, mergetool),
+the hook and description templates, and etc/gitconfig (main as the first branch, the CA bundle, one pack
+thread, and no pager: tOS has no less, and Git runs one when its output is a terminal). Left out: the commands that need Perl, Python or Tcl/Tk (git add -i, svn, gitk, gitweb, send-email),
+documentation and translations. The shell scripts need a /bin/sh (the busybox package).
+
+Built with:
+  make prefix=/system/pkg/git CURLDIR=<curl 8.23.0> NO_RUST=1 CURL_LDFLAGS=-lcurl NO_GETTEXT=1 NO_TCLTK=1 \
+    NO_PERL=1 NO_PYTHON=1 NO_EXPAT=1 NO_INSTALL_HARDLINKS=1 LDFLAGS=-Wl,-rpath,/system/pkg/curl/lib:/system/pkg/openssl/lib:/system/pkg/zlib/lib
+The builtin commands that are links to git were left out (git does them itself); the programs were stripped.
+
+ssh remotes (git clone git@host:repo): git runs /system/pkg/openssh/bin/ssh, set by core.sshCommand in etc/gitconfig; install the openssh package for it (tpkg install openssh).
